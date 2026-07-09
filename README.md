@@ -68,7 +68,6 @@ kubeadm version: &version.Info{Major:"1", Minor:"36", ...
 
 4. **CRI (Container Runtime Interface)**
 
-
 [Kubernetes Container Runtimes](https://kubernetes.io/docs/setup/production-environment/container-runtimes/)
 - Docker
 - containerd
@@ -84,4 +83,29 @@ $ containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
 $ sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/g' /etc/containerd/config.toml
 
 $ sudo systemctl restart containerd
+```
+
+5. **Other Configurations**
+
+- Activate ip forwarding on each node.
+```shell
+$ vim /etc/sysctl.conf
+net.ipv4.ip_forward=1 # activate
+
+$ sudo sysctl -p
+```
+
+- Set up the private IP address as this Kubernetes node’s IP.
+```shell
+$ vim /etc/default/kubelet
+KUBELET_EXTRA_ARGS=--node-ip=[PRIVATE_IP]
+```
+
+## Creating a Kubernetes Cluster
+
+1. Initialize Control Plane (only control plane)
+```shell
+$ sudo kubeadm init \
+--apiserver-advertise-address=[NODE_PRIV_IP] \
+--pod-network-cidr=10.244.0.0/16
 ```
