@@ -147,8 +147,17 @@ ubuntu-alpha-a   Ready    control-plane   76s   v1.36.2
 ```
 
 ### 2. Join the Cluster on Each Worker Node.
-
+- join the kubernetes cluster on each worker node.
 ```shell
-kubeadm join [CONTROL_PRIV_IP]:6443 --token [token] \
+$ kubeadm join [CONTROL_PRIV_IP]:6443 --token [token] \
 	--discovery-token-ca-cert-hash sha256:...
+```
+
+- check if worker nodes joined or not.
+```shell
+$ kubectl get nodes -o wide
+NAME             STATUS   ROLES           AGE     VERSION
+ubuntu-alpha-a   Ready    control-plane   5m43s   v1.36.2
+ubuntu-alpha-b   Ready    <none>          28s     v1.36.2
+ubuntu-alpha-c   Ready    <none>          6s      v1.36.2
 ```
