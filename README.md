@@ -161,3 +161,15 @@ ubuntu-alpha-a   Ready    control-plane   5m43s   v1.36.2
 ubuntu-alpha-b   Ready    <none>          28s     v1.36.2
 ubuntu-alpha-c   Ready    <none>          6s      v1.36.2
 ```
+
+## Container Network Interface (CNI) Installation
+
+[Calico v3.32.1 (CNCF Runtime - Cloud Native Network)](https://landscape.cncf.io/?item=runtime--cloud-native-network--project-calico)
+
+```shell
+$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/v1_crd_projectcalico_org.yaml
+$ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/tigera-operator.yaml
+
+$ curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/custom-resources.yaml
+$ kubectl create -f custom-resources.yaml
+```
