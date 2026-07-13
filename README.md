@@ -164,7 +164,10 @@ ubuntu-alpha-c   Ready    <none>          6s      v1.36.2
 
 ## Container Network Interface (CNI) Installation
 
-[Calico v3.32.1 (CNCF Runtime - Cloud Native Network)](https://landscape.cncf.io/?item=runtime--cloud-native-network--project-calico)
+> Calico v3.32.1
+
+- [Calico Installation Document](https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises)
+- [CNCF Landscape - Cloud Native Network (Calico)](https://landscape.cncf.io/?item=runtime--cloud-native-network--project-calico)
 
 ```shell
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/v1_crd_projectcalico_org.yaml
