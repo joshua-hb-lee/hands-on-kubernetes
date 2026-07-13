@@ -171,5 +171,30 @@ $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32
 $ kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/tigera-operator.yaml
 
 $ curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.32.1/manifests/custom-resources.yaml
+```
+
+- update CIDR in ip pools (Pod CIDR: 10.244.0.0/16)
+```shell
+$ vim custom-resources.yaml
+```
+[calico/custom-resources.yaml](https://github.com/joshua-hb-lee/hands-on-kubernetes/calico/custom-resources.yaml)
+```yaml
+apiVersion: operator.tigera.io/v1
+kind: Installation
+metadata:
+  name: default
+spec:
+  # Configures Calico networking.
+  calicoNetwork:
+    ipPools:
+      - name: default-ipv4-ippool
+        blockSize: 26
+        cidr: 10.244.0.0/24 ##### !!IMPORTANT!!
+        # ...
+```
+
+- apply calico resources
+```shell
 $ kubectl create -f custom-resources.yaml
+$ kubectl -n calico-system get pods
 ```
