@@ -202,5 +202,7 @@ $ kubectl create -f custom-resources.yaml
 $ kubectl -n calico-system get pods
 ```
 
-- Ingress Nginx Controller
-- Gateway API
+## Application Networking
+
+- Ingress Nginx Controller (Deprecated)
+- **Gateway API**
