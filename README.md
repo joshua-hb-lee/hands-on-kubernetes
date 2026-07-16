@@ -206,3 +206,26 @@ $ kubectl -n calico-system get pods
 
 - Ingress Nginx Controller (Deprecated)
 - **Gateway API**
+
+### Option 1) Ingress Nginx Controller (Deprecated)
+
+```shell
+# use YAML manifest
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.15.1/deploy/static/provider/cloud/deploy.yaml
+
+# use helm chart
+$ helm upgrade --install ingress-nginx ingress-nginx \
+  --repo https://kubernetes.github.io/ingress-nginx \
+  --namespace ingress-nginx --create-namespace
+```
+
+```shell
+$ kubectl -n ingress-nginx get pods
+NAME                                        READY   STATUS    RESTARTS   AGE
+ingress-nginx-controller-7c444fc6cf-spr87   1/1     Running   0          34s
+
+$ kubectl -n ingress-nginx get svc
+NAME                                 TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
+ingress-nginx-controller             LoadBalancer   10.103.69.117   <pending>     80:32078/TCP,443:31970/TCP   86s
+ingress-nginx-controller-admission   ClusterIP      10.101.12.159   <none>        443/TCP                      86s
+```
