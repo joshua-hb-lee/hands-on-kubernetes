@@ -1,7 +1,7 @@
 # Let’s Kubernetes! 
 
-Build a Kubernetes cluster from scratch.
-> using `kubeadm`
+Build a bare-metal Kubernetes cluster from scratch.
+> using `kubeadm` (bare-metal)
 
 ## Specification
 
