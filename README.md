@@ -207,7 +207,7 @@ $ kubectl -n calico-system get pods
 - Ingress Nginx Controller (Deprecated)
 - **Gateway API**
 
-### Option 1) Ingress Nginx Controller (Deprecated)
+### Ingress Nginx Controller (Deprecated)
 
 ```shell
 # use YAML manifest
